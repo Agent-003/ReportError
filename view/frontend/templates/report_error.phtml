@@ -1,31 +1,60 @@
 <?php
-/** @var \Pineapple\ReportError\Block\ReportError $block */
+
+use Pineapple\ReportError\Block\ReportError;
+use Magento\Framework\Escaper;
+
+/**
+ * @var ReportError $block
+ * @var Escaper $escaper
+ */
 ?>
+
 <hr>
-<div class="title"><strong><?= $block->escapeHtml(__('Report Error')) ?></strong></div>
+<div class="title"><strong><?= $escaper->escapeHtml(__('Report Error')) ?></strong></div>
 <div class="content">
-    <form class="form subscribe" novalidate action="" method="post"
-          data-mage-init='{"validation": {"errorClass": "mage-error"}}'>
-        <div class="field newsletter">
+    <form class="form report" method="post"
+          action="<?= $escaper->escapeHtml($block->getFormActionUrl()) ?>"
+          id="report-error">
+        <div class="field report-error">
             <div class="control">
                 <label for="error">
-                        <span class="label">
-                            <?= $block->escapeHtml(__('Report an error')) ?>
-                        </span>
+                    <span class="label"><?= $escaper->escapeHtml(__('Report an error')) ?></span>
                     <input name="error" type="text" id="error"
-                           placeholder="<?= $block->escapeHtml(__('Enter a description of the error')) ?>"
+                           placeholder="<?= $escaper->escapeHtml(__('Enter a description of the error')) ?>"
                            data-mage-init='{"mage/trim-input":{}}'
                            data-validate="{required:true}"/>
                 </label>
             </div>
         </div>
         <div class="actions">
-            <button class="action subscribe primary"
-                    title="<?= $block->escapeHtmlAttr(__('Subscribe')) ?>"
-                    type="submit"
-                    aria-label="Subscribe">
-                <span><?= $block->escapeHtml(__('Subscribe')) ?></span>
+            <button class="action primary" title="<?= $escaper->escapeHtml(__('Send')) ?>"
+                    type="submit" aria-label="Send">
+                <span><?= $escaper->escapeHtml(__('Send')) ?></span>
             </button>
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    require([
+        'Magento_Ui/js/modal/alert',
+        'jquery'
+    ], function (alert, $) {
+        $('form.report').on('submit', function (event) {
+            event.preventDefault();
+
+            var errorText = $('#error').val()
+            console.log(errorText)
+
+            alert({
+                title: $.mage.__('Thanks, message sent'),
+                content: errorText
+            })
+        })
+    })
+</script>
+
+
+
+
+
