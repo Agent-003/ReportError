@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Pineapple, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="footer">
+            <container name="report_bug" htmlTag="div" htmlClass="row">
+                <block class="Pineapple\ReportError\Block\ReportError" name="report_error" as="report_error" before="-" template="Pineapple_ReportError::report_error.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

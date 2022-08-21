@@ -1,0 +1,31 @@
+<?php
+/** @var \Pineapple\ReportError\Block\ReportError $block */
+?>
+<hr>
+<div class="title"><strong><?= $block->escapeHtml(__('Report Error')) ?></strong></div>
+<div class="content">
+    <form class="form subscribe" novalidate action="" method="post"
+          data-mage-init='{"validation": {"errorClass": "mage-error"}}'>
+        <div class="field newsletter">
+            <div class="control">
+                <label for="error">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Report an error')) ?>
+                        </span>
+                    <input name="error" type="text" id="error"
+                           placeholder="<?= $block->escapeHtml(__('Enter a description of the error')) ?>"
+                           data-mage-init='{"mage/trim-input":{}}'
+                           data-validate="{required:true}"/>
+                </label>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="action subscribe primary"
+                    title="<?= $block->escapeHtmlAttr(__('Subscribe')) ?>"
+                    type="submit"
+                    aria-label="Subscribe">
+                <span><?= $block->escapeHtml(__('Subscribe')) ?></span>
+            </button>
+        </div>
+    </form>
+</div>
