@@ -10,7 +10,8 @@
     <body>
         <referenceContainer name="footer">
             <container name="report_bug" htmlTag="div" htmlClass="row">
-                <block class="Pineapple\ReportError\Block\ReportError" name="report_error" as="report_error" before="-" template="Pineapple_ReportError::report_error.phtml"/>
+                <block class="Pineapple\ReportError\Block\ReportError" name="report_error" as="report_error" before="-"
+                       template="Pineapple_ReportError::report_error.phtml" ifconfig="pineapple_report_error/general/enable"/>
             </container>
         </referenceContainer>
     </body>
